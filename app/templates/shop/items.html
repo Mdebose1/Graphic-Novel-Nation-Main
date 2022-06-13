@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Purchase Manga</h2>
+
+    <div class="card-deck">
+        <div class="col-4">
+            {%for product in products  %}
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-header">
+                        <p class="card-text">{{ product.name }}</p>
+                        <span class="float-right">{{ product.price }}</span>
+                    </div>
+                    <div class="card-body">
+                        <img class="card-img-top" src="{{ product.image }}" alt="{{ product.name }}">
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-info btn-block"> Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
